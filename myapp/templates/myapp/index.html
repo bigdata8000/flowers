@@ -1,0 +1,30 @@
+{% extends 'base/base.html' %}
+{% block content %}
+
+<h2>Flowers & Passion</h2>
+<p>Our passionate florists at Secret Garden Rose understand the importance of making sure your gift shines.  We offer a variety of presentation options: we wrap our bouquets with quality wrapping materials ranging from high-quality paper to cloth, from tulle to organza. You also have the option of having your flowers delivered in premium vases - selected specifically to suit each floral arrangement.</p>
+
+<div class="card-columns">
+{% for flower in flowers %} 
+    <div class="card">
+        <div class="card-body">
+            <img class="card-img-top" src="{{ flower.image.url }}"> 
+            <br><br>
+            <h5 class="card-title">{{ flower.title }}</h5>
+            <p class="card-text">{{ flower.description | truncatechars:100 }}</p>
+            <hr>
+            <p> Plant type: {{ flower.category }}</p>
+            <hr>
+            {% for tag in flower.tags.all %}
+                ⚠️ {{ tag }}
+            {% endfor %}
+            <hr>
+            <a class='btn btn-primary' href="{% url 'detail' flower.id %}" class="card-link">View</a>
+            <a class='btn btn-primary' href="{% url 'edit' flower.id %}" class="card-link">Edit</a>
+        </div>
+    </div>
+{% endfor %}
+</div>
+
+
+{% endblock %}

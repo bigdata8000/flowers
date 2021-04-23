@@ -1,0 +1,15 @@
+{% extends 'base/base.html' %} 
+{% block content %}
+
+<div class="jumbotron">
+    <div class="container">
+        <h1 class="display-4">{{ flower.title }}</h1>
+        <img width='100%' src="{{ flower.image.url }}">
+        <br><br>
+        <div class="lead">{{ flower.description }}</div>
+    </div>
+</div>
+
+<a class='btn btn-primary' href="{% url 'index' %}">Back<a> 
+
+{% endblock %}
